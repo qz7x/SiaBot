@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA Bot | Sovereign Legal Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sia-blue: #1D4886;
+            --sia-gold: #FCB130;
+            --apple-gray: #f5f5f7;
+            --glass: rgba(255, 255, 255, 0.7);
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--apple-gray);
+            color: #1d1d1f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            margin: 0 20px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        nav a:hover { opacity: 1; color: var(--sia-gold); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 60vh;
+            background: var(--sia-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 50px;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: appleReveal 1s forwards 0.2s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: appleReveal 1s forwards 0.4s;
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .container {
+            max-width: 980px;
+            margin: -80px auto 100px;
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            opacity: 0;
+            animation: appleReveal 1.2s forwards 0.6s;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            gap: 15px;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border-radius: 20px;
+            border: none;
+            background: #e8e8ed;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background: var(--sia-blue);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- POLICY TEXT STYLING --- */
+        .policy-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .policy-content.active { display: block; }
+
+        h2 { font-size: 2rem; margin-bottom: 20px; color: var(--sia-blue); }
+        h3 { margin-top: 30px; font-weight: 600; }
+        ul { margin-left: 20px; margin-top: 10px; }
+        li { margin-bottom: 10px; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes appleReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 14px;
+            color: #86868b;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#">Flight Portal</a>
+    <a href="#">Fleet</a>
+    <a href="#">Support</a>
+    <a href="#">Legal</a>
+</nav>
+
+<section class="hero">
+    <h1>Singapore Airlines Bot</h1>
+    <p>Premium Operations. Global Compliance.</p>
+</section>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('tos')">Terms of Service</button>
+        <button class="tab-btn" onclick="switchTab('privacy')">Privacy Policy</button>
+    </div>
+
+    <div id="tos" class="policy-content active">
+        <h2>Terms of Service</h2>
+        <p>Welcome to the Singapore Airlines (SIA) Bot operations. By utilizing our Discord application, you agree to these Sovereign Terms.</p>
+        
+        <h3>1. Acceptance of Terms</h3>
+        <p>By interacting with the SIA Bot, you acknowledge that you have read and agreed to comply with these rules. These terms are subject to change to meet Discord’s Safety Guidelines.</p>
+        
+        <h3>2. Authorized Use</h3>
+        <p>The SIA Bot is designed for simulation and airline management. Users must not attempt to reverse engineer the code or use the /flight system to broadcast prohibited content.</p>
+        
+        <h3>3. Flight Termination</h3>
+        <p>Staff members with appropriate roles reserve the right to terminate any flight, manifest, or data entry at their discretion for operational security.</p>
+    </div>
+
+    <div id="privacy" class="policy-content">
+        <h2>Privacy Policy</h2>
+        <p>We believe privacy is a fundamental human right. Our data practices are minimal and transparent.</p>
+        
+        <h3>1. Information We Collect</h3>
+        <ul>
+            <li><strong>User IDs:</strong> Collected during /checkin to generate flight manifests.</li>
+            <li><strong>Interaction Logs:</strong> Command usage is logged in <code>audit_logs.txt</code> for security.</li>
+        </ul>
+
+        <h3>2. Data Retention</h3>
+        <p>Flight data is stored locally in JSON format. Once a flight is terminated via <code>/flight_terminate</code>, the associated manifest data is purged from active memory.</p>
+
+        <h3>3. Your Rights</h3>
+        <p>Users may request the removal of their data from any active manifest by contacting a Server Administrator.</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Singapore Airlines Bot Operations. Designed with Apple-inspired precision.<br>
+    A Great Way to Fly.
+</footer>
+
+<script>
+    function switchTab(tabId) {
+        // Remove active class from all buttons and contents
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.policy-content').forEach(content => content.classList.remove('active'));
+
+        // Add active class to selected
+        event.currentTarget.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+
+        // Smooth Apple Scroll Effect
+        window.scrollTo({
+            top: document.querySelector('.container').offsetTop - 100,
+            behavior: 'smooth'
+        });
+    }
+
+    // Intersection Observer for Apple-style scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.container').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
